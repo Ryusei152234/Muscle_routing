@@ -1,0 +1,6 @@
+<%= form_for @motivation do |f| %>
+  <div class="y">
+    <%= f.label :contents %>
+    <%= f.text_field :contents, :size => 140 %> 
+    <%= f.submit "編集する" %>
+  <% end %>

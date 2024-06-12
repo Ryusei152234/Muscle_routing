@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<div class="h">
+
+<p>
+  <strong>タイトル</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>時間</strong>
+  <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @blog.content %>
+</p>
+
+<%= link_to '編集する', edit_blog_path(@blog) %> |
+<%= link_to '戻る', blogs_path %>
+<%= link_to "トップページへ戻る", motivations_path %>
+
+<h1>Muscle</h1>
+<h3>Tweet詳細</h3>
+<div class="blog">
+  <p><%= @blog.body %></p>
+  <p><%= @blog.created_at %></p>
+    <% if user_signed_in? %>
+      <% if current_user.already_liked?(@blog) %>
+        <%= link_to blog_like_path(@blog), method: :delete do %>
+          <p>いいねを取り消す</p><%= @blog.likes.count %>
+        <% end %>
+      <% else %>
+        <%= link_to blog_likes_path(@blog), method: :post do %>
+          <p>いいね</p><%= @blog.likes.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>いいねの数 = </p><%= @blog.likes.count %>
+    <% end %>
+  <%= link_to "編集する", edit_blog_path(@blog.id) %>
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @blog.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<%= link_to "Tweet一覧に戻る", blog_path %>
