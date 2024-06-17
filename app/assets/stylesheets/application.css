@@ -1,6 +1,6 @@
 p {
-    color: black;  /*文字色を青に設定*/
-   }
+  color: black;  /*文字色を青に設定*/
+}
    
    .box {
     background-color: pink;  /*背景色をピンク色に設定*/
@@ -46,7 +46,7 @@ p {
 }
 body {
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
-    Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+  Meiryo, "ＭＳ Ｐゴシック", sans-serif;
 }
 header {
   background-color: rgba(0, 0, 0, 0.5);
@@ -124,7 +124,6 @@ main{
     box-shadow:  20px 20px 60px #52585f, -20px -20px 60px #707681;
  }
 
- }
  .button {
   background-color: #095DAD;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
