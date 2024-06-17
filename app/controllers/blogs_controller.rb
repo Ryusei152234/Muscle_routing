@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
+    @blog.user = current_user
   end
 
   def show
@@ -13,8 +14,12 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Blog.create(blog_parameter)
-    redirect_to blogs_path
+    blog = Blog.new(blog_parameter)
+    if blog.save!
+        redirect_to :action => "index"
+    else
+        redirect_to :action => "new"
+    end
   end
 
   def destroy
@@ -41,5 +46,7 @@ class BlogsController < ApplicationController
   def blog_parameter
     params.require(:blog).permit(:title, :content, :start_time)
   end
+  
 
+  
 end

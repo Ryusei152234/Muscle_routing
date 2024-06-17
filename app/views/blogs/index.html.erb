@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<p id="notice><%= notice %></p>
 <h1>自分の日記</h1>
 
 <table>
@@ -16,6 +15,19 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <% if user_signed_in? %>
+          <% if current_user.already_gooded?(blog) %>
+            <%= link_to  blog_good_path(id: blog.id,blog_id: blog.id), method: :delete do %>
+                <p>いいねを取り消す</p><%= blog.goods.count %>
+            <% end %>
+          <% else %>
+            <%= link_to blog_goods_path(id: blog.id,blog_id: blog.id), method: :post do %>
+              <p>いいね</p><%= blog.goods.count %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p>いいねの数 = </p><%= blog.goods.count %>
+        <% end %>
         <td><%= link_to '表示する', blog %></td>
         <td><%= link_to '編集する', edit_blog_path(blog.id) %></td>
         <td><%= link_to '消去する',blog_path(blog.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -39,6 +51,3 @@
 <% end %>
 <%= link_to "トップページへ戻る", motivations_path %>
 
-
-
-# 割愛

@@ -1,8 +1,9 @@
 <div class="satoko">
 <div class="ryu">
   <h1>Muscle</h1>
-  <h3>motivation</h3>
+  <h3>MY GOAL</h3>
   <%= link_to "新規投稿へ",  new_motivation_path %>
+  </div>
   <div class="motivations">
     <% @motivations.each do |t| %>
       <div class="motivation">
@@ -11,12 +12,12 @@
         <%= t.created_at %>
         <% if user_signed_in? %>
           <% if current_user.already_liked?(t) %>
-            <%= button_to motivation_like_path(id: t.id,motivation_id: t.id), method: :delete do %>
-                <p>いいねを取り消す</p><%= t.likes.count %>
+            <%= link_to motivation_like_path(id: t.id,motivation_id: t.id), method: :delete do %>
+              <p>いいねを取り消す</p><%= t.likes.count %>
             <% end %>
           <% else %>
             <%= button_to motivation_likes_path(id: t.id,motivation_id: t.id), method: :post do %>
-                <p>いいね</p><%= t.likes.count %>
+              <p>いいね</p><%= t.likes.count %>
             <% end %>
           <% end %>
         <% else %>
@@ -34,6 +35,9 @@
   <h1>自分の日記</h1>
 
   <table>
+
+    <div class="b">
+    
     <thead>
       <tr>
         <th>タイトル</th>
@@ -47,6 +51,19 @@
         <tr>
           <td><%= blog.title %></td>
           <td><%= blog.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+          <% if user_signed_in? %>
+      <% if current_user.already_gooded?(blog) %>
+              <%= link_to blog_good_path(id: blog.id,blog_id: blog.id), method: :delete do %>
+          <p>いいねを取り消す</p><%= blog.goods.count %>
+        <% end %>
+      <% else %>
+        <%= link_to blog_goods_path(id: blog.id,blog_id: blog.id), method: :post do %>
+          <p>いいね</p><%= blog.goods.count %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>いいねの数 = </p><%= blog.goods.count %>
+    <% end %>
           <td><%= link_to '表示する', blog %></td>
           <td><%= link_to '編集する', edit_blog_path(blog.id) %></td>
           <td><%= link_to '消去する',blog_path(blog.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>

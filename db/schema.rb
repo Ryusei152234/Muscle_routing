@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_31_143114) do
+ActiveRecord::Schema.define(version: 2024_06_16_152312) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2024_05_31_143114) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -58,15 +59,31 @@ ActiveRecord::Schema.define(version: 2024_05_31_143114) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "goods", force: :cascade do |t|
+    t.integer "blog_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id"], name: "index_goods_on_blog_id"
+    t.index ["user_id"], name: "index_goods_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "motivation_id", null: false
     t.integer "user_id", null: false
-    t.integer "blog_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["blog_id"], name: "index_likes_on_blog_id"
     t.index ["motivation_id"], name: "index_likes_on_motivation_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "loves", force: :cascade do |t|
+    t.integer "motivation_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["motivation_id"], name: "index_loves_on_motivation_id"
+    t.index ["user_id"], name: "index_loves_on_user_id"
   end
 
   create_table "motivations", force: :cascade do |t|
@@ -92,7 +109,10 @@ ActiveRecord::Schema.define(version: 2024_05_31_143114) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "motivations"
   add_foreign_key "comments", "users"
-  add_foreign_key "likes", "blogs"
+  add_foreign_key "goods", "blogs"
+  add_foreign_key "goods", "users"
   add_foreign_key "likes", "motivations"
   add_foreign_key "likes", "users"
+  add_foreign_key "loves", "motivations"
+  add_foreign_key "loves", "users"
 end

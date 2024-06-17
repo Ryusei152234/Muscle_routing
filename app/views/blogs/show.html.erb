@@ -23,26 +23,13 @@
 <h1>Muscle</h1>
 <h3>Tweet詳細</h3>
 <div class="blog">
-  <p><%= @blog.body %></p>
+  <p><%= @blog.title %></p>
   <p><%= @blog.created_at %></p>
-    <% if user_signed_in? %>
-      <% if current_user.already_liked?(@blog) %>
-        <%= link_to blog_like_path(@blog), method: :delete do %>
-          <p>いいねを取り消す</p><%= @blog.likes.count %>
-        <% end %>
-      <% else %>
-        <%= link_to blog_likes_path(@blog), method: :post do %>
-          <p>いいね</p><%= @blog.likes.count %>
-        <% end %>
-      <% end %>
-    <% else %>
-      <p>いいねの数 = </p><%= @blog.likes.count %>
-    <% end %>
   <%= link_to "編集する", edit_blog_path(@blog.id) %>
 </div>
 
 <h2>いいねしたユーザー</h2>
-<% @blog.liked_users.each do |user| %>
+<% @blog.gooded_users.each do |user| %>
   <li><%= user.email %></li>
 <% end %>
 

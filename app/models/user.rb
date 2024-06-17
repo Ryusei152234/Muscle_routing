@@ -11,8 +11,10 @@ class User < ApplicationRecord
           self.likes.exists?(motivation_id: motivation.id)
         end
         has_many :liked_blogs, through: :likes, source: :blog
-         def already_liked?(blog)
-          self.likes.exists?(blog_id: blog.id)
+         def already_gooded?(blog)
+          self.goods.exists?(blog_id: blog.id)
         end
         has_many :comments, dependent: :destroy
+        has_many :goods, dependent: :destroy
+        has_many :gooded_blogs, through: :goods, source: :blog
 end

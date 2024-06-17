@@ -68,4 +68,4 @@ gem 'mini_magick'
 
 # Active Storageバリデーション用
 gem 'active_storage_validations'
- 
+

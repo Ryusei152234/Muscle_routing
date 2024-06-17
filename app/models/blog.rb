@@ -1,5 +1,5 @@
 class Blog < ApplicationRecord
-    belongs_to :user   #追加
-    has_many :likes, dependent: :destroy
-    has_many :liked_users, through: :likes, source: :user 
+    belongs_to :user, optional: true
+    has_many :goods, dependent: :destroy
+    has_many :gooded_users, through: :goods, source: :user
 end

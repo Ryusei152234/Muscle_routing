@@ -16,7 +16,7 @@ p {
     background-image: url("images/background.png");
     opacity: 0.8;
     height:300px;
-    background-size: cover;
+    background-size: 100px;
     padding-top: 450px;
   }  
   .haya{padding-top: 410px;
@@ -106,11 +106,36 @@ main{
   opacity: 0.8;
   height:450px;
   background-size: cover;
-
+  padding-top: 410px;
 }
-  .h{padding-top: 460px;
+  .h{
+    padding-top: 460px;
   }
-  .a{padding-top: 460px;
+  .a{
+    padding-top: 460px;
   }
-  .y{padding-top: 460px;
+  .y{
+    padding-top: 460px;
   }
+
+  .b{
+    border-radius: 50px;
+    background: #616770;
+    box-shadow:  20px 20px 60px #52585f, -20px -20px 60px #707681;
+ }
+
+ }
+ .button {
+  background-color: #095DAD;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  padding: 1.25rem 4rem;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
