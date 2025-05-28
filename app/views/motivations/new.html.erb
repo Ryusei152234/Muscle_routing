@@ -1,26 +1,20 @@
-<h1>muscle routing</h1>
-<div class="haya">
-<h3>新規投稿ページ</h3>
-<%= link_to "新規投稿へ", new_motivation_path %>
-<%= form_for @motivation do |f| %>
-    <div class="field">
-    <%= f.label :新規投稿 %>
-    <%= f.text_area :contents, :size => "30x2" %>
+<div class="container">
+  <div class="section-title">
+    <h1>新規投稿</h1>
   </div>
-  <%= f.submit "投稿する" %>
-  <% end %>
-  
-  <%= link_to "トップページへ戻る", motivations_path %>
 
-<div class="post-container">
-    <p class="title">投稿フォーム</p>
-    <%= form_for(@motivation, :url => { controller:'motivations', action:'create'})do |f| %>
-    <%= f.label :投稿内容 %>
-        <br>
-        <%= f.text_field :contents,size: 140%>
-        <br>
-    <%= f.submit "送信"%>
-    <br>
-    <% end %>
-</div>
+  <%= form_for @motivation do |f| %>
+    <div class="form-group">
+      <%= f.label :contents, "投稿内容", class: "form-label" %>
+      <%= f.text_area :contents, size: "50x3", class: "form-control" %>
+    </div>
+
+    <div class="button-container">
+      <%= f.submit "投稿する", class: "btn btn-submit" %>
+    </div>
+  <% end %>
+
+  <div class="button-container">
+    <%= link_to "←トップページへ戻る", motivations_path, class: "btn btn-back" %>
+  </div>
 </div>

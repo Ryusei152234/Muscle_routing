@@ -1,28 +1,36 @@
-<%= form_with(model: @blog, local: true) do |form| %>
+<div class="container blog-form">
+  <div class="section-title">
+    <h1>📝 トレーニング記録を投稿</h1>
+  </div>
+
+  <%= form_with(model: @blog, local: true) do |form| %>
     <% if @blog.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-  
+        <h2><%= pluralize(@blog.errors.count, "件のエラー") %> が発生しました:</h2>
         <ul>
-        <% @blog.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+          <% @blog.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
         </ul>
       </div>
     <% end %>
-  
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+
+    <div class="form-group">
+      <%= form.label :title, "タイトル", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control" %>
     </div>
-  
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content %>
+
+    <div class="form-group">
+      <%= form.label :content, "内容", class: "form-label" %>
+      <%= form.text_area :content, rows: 5, class: "form-control" %>
     </div>
-  
-    <div class="actions">
-      <%= form.submit %>
+
+    <div class="button-container">
+      <%= form.submit "保存する", class: "btn btn-submit" %>
     </div>
   <% end %>
-  <%= link_to "トップページへ戻る", motivations_path %>
+
+  <div class="button-container">
+    <%= link_to "←トップページへ戻る", motivations_path, class: "btn btn-back" %>
+  </div>
+</div>

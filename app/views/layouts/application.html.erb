@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Muscle</title>
+    <title>Muscle Routine</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
-  <header>
- <div class="title">
-    <h1>Muscle</h1>
-  </div>
-  <div class="header-list">
-   <ul>
-    <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-     <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
-    <% end %>
-   </ul>
-  </div>
- </header>
- <main>
-  <%= yield %>
- </main>
- <div class="main">
-</div>
-</body>
-</html>
-<!DOCTYPE html>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&display=swap" rel="stylesheet">
 
+    </head>
+  <body>
+  
+  <header class="header">
+  <div class="header-container">
+    <h1 class="logo"><a href="/">Muscle Routine</a></h1>
+    <nav class="nav">
+      <ul class="nav-left">
+        <% if user_signed_in? %>
+          <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn-header" %></li>
+        <% else %>
+          <li><a href="<%= new_user_session_path %>" class="btn btn-login">ログイン</a></li>
+        <% end %>
+      </ul>
+      <% unless user_signed_in? %>
+        <a href="<%= new_user_registration_path %>" class="btn btn-register">新規登録</a>
+      <% end %>
+    </nav>
+  </div>
+  </header>
+
+
+  <main>
+    <%= yield %>
+  </main>
+
+  </body>
+</html>

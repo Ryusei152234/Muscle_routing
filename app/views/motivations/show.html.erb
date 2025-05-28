@@ -1,48 +1,52 @@
-<h1>Muscle</h1>
-<div class="a">
-<h3>Muscle詳細</h3>
-<div class="motivation">
-  <p><%= @motivation.contents%></p>
-  <p><%= @motivation.created_at %></p>
-    <% if user_signed_in? %>
-      <% if current_user.already_liked?(@motivation) %>
-        <%= button_to motivation_like_path(@motivation), method: :delete do %>
-          <p>いいねを取り消す</p><%= @motivation.likes.count %>
+<div class="motivation-detail container">
+  <h2 class="section-title">🔥 Muscle詳細</h2>
+
+  <div class="motivation-card">
+    <p class="motivation-content"><%= @motivation.contents %></p>
+    <p class="motivation-date"><%= @motivation.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+
+    <div class="like-section">
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(@motivation) %>
+          <%= button_to motivation_like_path(@motivation), method: :delete, class: "btn btn-like danger" do %>
+            <i class="fas fa-heart-broken"></i> いいねを取り消す (<%= @motivation.likes.count %>)
+          <% end %>
+        <% else %>
+          <%= button_to motivation_likes_path(@motivation), method: :post, class: "btn btn-like primary" do %>
+            <i class="fas fa-heart"></i> いいね (<%= @motivation.likes.count %>)
+          <% end %>
         <% end %>
       <% else %>
-        <%= button_to motivation_likes_path(@motivation), method: :post do %>
-          <p>いいね</p><%= @motivation.likes.count %>
-        <% end %>
+        <p>いいねの数: <%= @motivation.likes.count %></p>
       <% end %>
-    <% else %>
-      <p>いいねの数 = </p><%= @motivation.likes.count %>
-    <% end %>
-  <%= link_to "編集する", edit_motivation_path(@motivation.id) %>
-</div>
-
-<h2>いいねしたユーザー</h2>
-<% @motivation.liked_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-<div class="comment-wrapper">
-  <p>コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.email unless c.user.blank? %>
-      <br>
-      <%= c.content %>
     </div>
-      <br>
-  <% end %>
 
-  <% if user_signed_in? %>
-    <%= form_with(model: [@motivation, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
+    <%= link_to "編集する", edit_motivation_path(@motivation.id), class: "btn btn-edit" %>
+  </div>
+
+  <h3 class="sub-title">❤️ いいねしたユーザー</h3>
+  <ul class="user-list">
+    <% @motivation.liked_users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+
+  <div class="comment-wrapper">
+    <h3 class="sub-title">💬 コメント一覧</h3>
+    <% @comments.each do |c| %>
+      <div class="comment">
+        <span class="comment-user"><%= c.user.email unless c.user.blank? %></span>
+        <p class="comment-text"><%= c.content %></p>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= form_with(model: [@motivation, @comment], local: true, class: "comment-form") do |f| %>
+        <%= f.text_area :content, placeholder: "コメントを入力", class: "comment-input" %>
+        <%= f.submit "コメントする", class: "btn btn-comment" %>
       <% end %>
     <% end %>
-  <% end %>
-</div>
-<%= link_to "トップページへ戻る", motivations_path %>
+  </div>
 
+  <%= link_to "←トップページへ戻る", motivations_path, class: "btn btn-back" %>
+</div>

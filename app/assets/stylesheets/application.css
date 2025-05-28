@@ -1,140 +1,368 @@
-p {
-  color: black;  /*文字色を青に設定*/
+/* === 🔥 Header Design === */
+.header {
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(8px);
+  padding: 15px 0;
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  position: relative;
 }
-   
-   .box {
-    background-color: pink;  /*背景色をピンク色に設定*/
-    height: 100px;  /*箱の高さを100pxに設定*/
-   }
-   .title h1{
-    color:rgb(250, 247, 247);
-    margin-top: 45px;
-   }
 
-   .satoko{
-    position: relative;
-    background-image: url("images/background.png");
-    opacity: 0.8;
-    height:300px;
-    background-size: 100px;
-    padding-top: 450px;
-  }  
-  .haya{padding-top: 410px;
-   }
-  
-   .tomo{padding-top: 460px;
-   }
-  /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
-* {
-  padding: 0;
-  margin: 0;
-}
-body {
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
-  Meiryo, "ＭＳ Ｐゴシック", sans-serif;
-}
-header {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 80px;
-  font-weight: bold;
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
-header a {
-  color: white; 
-  text-decoration: none; 
-}
-header h1 {
-  color: white;
-  margin-left: 20px;
-}
-.header-list {
-  display: flex;
-  align-items: center;
-}
-header ul {
-  display: flex;
-}
-header li {
-  list-style: none;
-  margin-right: 40px;
-}
-.post-container {
-  margin: 50px auto;
-  width: 50%;
-  border: solid #d3def1;
-  border-radius: 10px;
-  text-align: center;
-  background-color: #d3def1;
-}
-.title {
-  font-size: 32px;
+.logo a {
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 50px;
-}
-
-input[type="text"] {
-  width: 95%;
-  height: 40px;
-}
-
-input[type="submit"] {
-  width: 200px;
-  font-size: 20px;
-  margin-top: 50px;
-  margin-bottom: 30px;
-}
-main{
-  background-image: url("background.png");
-  opacity: 0.8;
-  height:450px;
-  background-size: cover;
-  padding-top: 410px;
-}
-  .h{
-    padding-top: 460px;
-  }
-  .a{
-    padding-top: 460px;
-  }
-  .y{
-    padding-top: 460px;
-  }
-
-  .b{
-    border-radius: 50px;
-    background: #616770;
-    box-shadow:  20px 20px 60px #52585f, -20px -20px 60px #707681;
- }
-
- .button {
-  background-color: #095DAD;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
-  color: #fff;
-  display: inline-block;
-  font-weight: 700;
-  padding: 1.25rem 4rem;
+  color: #ffffff;
   text-decoration: none;
 }
 
-.button:hover {
+/* === 🌌 Modern Dark Theme === */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  color: #e6e6e6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* === ✨ Headings === */
+h1 {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0px 4px 6px rgba(157, 78, 221, 0.5);
+  border-bottom: 2px solid #9d4edd;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-shadow: 0px 4px 6px rgba(157, 78, 221, 0.5);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #9d4edd, #ff7aa2);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(157, 78, 221, 0.7);
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #9d4edd, #ff7aa2);
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #ff7aa2, #9d4edd);
+  box-shadow: 0px 0px 12px rgba(255, 122, 162, 0.8);
+  transform: scale(1.05);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  color: #1a1a1a;
+  font-weight: bold;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(135deg, #92fe9d, #00c9ff);
+  box-shadow: 0px 0px 12px rgba(0, 201, 255, 0.8);
+}
+
+.btn-back {
+  background: linear-gradient(135deg, #ff7aa2, #9d4edd);
+}
+
+.btn-back:hover {
+  background: linear-gradient(135deg, #9d4edd, #ff7aa2);
+}
+
+/* === Tables === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #9d4edd;
+  padding: 12px;
+  text-align: left;
+  color: white;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 122, 162, 0.3);
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === Form Styling === */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ff7aa2;
+  font-size: 1.2rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #e6e6e6;
+  resize: none;
+}
+
+.form-control:focus {
+  outline: none;
+  border: 1px solid #9d4edd;
+  box-shadow: 0 0 8px rgba(157, 78, 221, 0.6);
+}
+
+/* === カレンダー拡大 & ナビカスタム === */
+.simple-calendar {
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.simple-calendar table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.simple-calendar th {
+  background: #9d4edd;
+  color: white;
+  padding: 12px;
+  font-size: 1.1rem;
+}
+
+.simple-calendar td {
+  height: 120px;
+  padding: 10px;
+  vertical-align: top;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.simple-calendar td:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.simple-calendar .calendar-link {
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #ff7aa2;
+  text-decoration: none;
+}
+
+.simple-calendar .calendar-link:hover {
   text-decoration: underline;
-  text-underline-offset: 4px;
+}
+
+.simple-calendar .today {
+  background: rgba(157, 78, 221, 0.2);
+  border: 2px solid #9d4edd;
+}
+
+.calendar-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 10px 0;
+  border-bottom: 2px solid #9d4edd;
+  color: #ffffff;
+}
+
+.calendar-prev a,
+.calendar-next a {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #ff7aa2;
+  text-decoration: none;
+  transition: all 0.3s ease, transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 16px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.2);
+}
+
+.calendar-prev a::before {
+  content: "← ";
+  font-weight: bold;
+  color: #ff7aa2;
+}
+
+.calendar-next a::after {
+  content: " →";
+  font-weight: bold;
+  color: #ff7aa2;
+}
+
+.calendar-prev a:hover {
+  transform: translateX(-5px);
+  background: rgba(157, 78, 221, 0.3);
+  color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(157, 78, 221, 0.6);
+}
+
+.calendar-next a:hover {
+  transform: translateX(5px);
+  background: rgba(157, 78, 221, 0.3);
+  color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(157, 78, 221, 0.6);
+}
+
+.calendar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0px 4px 6px rgba(157, 78, 221, 0.5);
+  transition: all 0.3s ease;
+}
+
+.calendar-title:hover {
+  color: #ff7aa2;
+  transform: scale(1.05);
+}
+input.btn-header {
+  background: linear-gradient(135deg, #9d4edd, #ff7aa2);
+  box-shadow: 0px 0px 12px rgba(255, 122, 162, 0.8);
+  color: #ffffff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input.btn-header:hover {
+  background: linear-gradient(135deg, #ff7aa2, #9d4edd);
+  box-shadow: 0px 0px 12px rgba(255, 122, 162, 0.8);
+}
+
+.nav-left {
+  list-style: none; /* ドット（リストマーカー）非表示！ */
+  padding: 0;
+  margin: 0;
+  display: flex; /* 横並びにもしたいなら */
+  gap: 10px; /* ボタン間の余白 */
+  align-items: center; /* 縦揃え */
+}
+
+.highlight-goal {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid #ff7aa2;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 122, 162, 0.5);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.goal-user {
+  font-size: 1rem;
+  color: #9d4edd;
+  margin-bottom: 10px;
+}
+
+.goal-content {
+  font-size: 2rem; /* 大きく目立たせる */
+  font-weight: bold;
+  color: #ff7aa2;
+  text-shadow: 0px 0px 8px rgba(255, 122, 162, 0.7);
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* === 自分の目標を強調表示 === */
+.highlight-goal {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
+  text-align: center;
+}
+
+.goal-content {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff7aa2;
+  text-shadow: 0 0 8px rgba(255, 122, 162, 0.7);
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.goal-user {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+h1, .section-title h1, .section-title h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900; /* 太めでかっこよく */
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0px 4px 6px rgba(157, 78, 221, 0.5);
+  border-bottom: 2px solid #9d4edd;
+  display: inline-block;
+  padding-bottom: 10px;
 }

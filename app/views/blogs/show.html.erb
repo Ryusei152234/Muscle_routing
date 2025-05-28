@@ -1,36 +1,28 @@
-<p id="notice"><%= notice %></p>
-<div class="h">
+<div class="container blog-detail">
 
-<p>
-  <strong>タイトル</strong>
-  <%= @blog.title %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>時間</strong>
-  <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %>
-</p>
+  <div class="section-title">
+    <h1>📝 トレーニング記録 詳細</h1>
+  </div>
 
-<p>
-  <strong>内容</strong>
-  <%= @blog.content %>
-</p>
+  <div class="blog-card">
+    <p><strong>タイトル：</strong> <%= @blog.title %></p>
+    <p><strong>時間：</strong> <%= @blog.start_time.strftime("%Y-%m-%d %H:%M") %></p>
+    <p><strong>内容：</strong> <%= @blog.content %></p>
+  </div>
 
-<%= link_to '編集する', edit_blog_path(@blog) %> |
-<%= link_to '戻る', blogs_path %>
-<%= link_to "トップページへ戻る", motivations_path %>
+  <div class="button-group">
+    <%= link_to '編集する', edit_blog_path(@blog), class: "btn btn-edit" %>
+    <%= link_to '一覧に戻る', blogs_path, class: "btn btn-back" %>
+    <%= link_to '←トップページへ戻る', motivations_path, class: "btn btn-back" %>
+  </div>
 
-<h1>Muscle</h1>
-<h3>Tweet詳細</h3>
-<div class="blog">
-  <p><%= @blog.title %></p>
-  <p><%= @blog.created_at %></p>
-  <%= link_to "編集する", edit_blog_path(@blog.id) %>
+  <h3 class="sub-title">❤️ いいねしたユーザー</h3>
+  <ul class="user-list">
+    <% @blog.gooded_users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+
 </div>
-
-<h2>いいねしたユーザー</h2>
-<% @blog.gooded_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-
-<%= link_to "Tweet一覧に戻る", blog_path %>

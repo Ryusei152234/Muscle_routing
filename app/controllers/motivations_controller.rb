@@ -1,48 +1,56 @@
 class MotivationsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create]
-    def index
-        @motivations = Motivation.all
-        @blogs = Blog.all
-    end
-    def new
-        @motivation = Motivation.new
-      end
-    
-      def create
-        @motivation = current_user.motivations.build(motivation_params)
-        if @motivation.save
-          redirect_to motivations_path
-        else
-          render 'new'
-        end
-      end
-      
-      
-      def update
-        motivation = Motivation.find(params[:id])
-        if motivation.update(motivation_params)
-          redirect_to :action => "show", :id => motivation.id
-        else
-          redirect_to :action => "new"
-        end
-      end
-      def destroy
-        motivation = Motivation.find(params[:id])
-        motivation.destroy
-        redirect_to action: :index
-      end
-      def show
-        @motivation= Motivation.find(params[:id])
-        @comments = @motivation.comments
-        @comment = Comment.new
-      end
-      def edit
-        @motivation = Motivation.find(params[:id])
-      end
-    
-      private
-      def motivation_params
-        params.require(:motivation).permit(:contents, :title)
-      end
-end
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+  def index
+    if user_signed_in?
+      @motivations = current_user.motivations # 自分の目標だけ
+    else
+      @motivations = Motivation.none # 未ログインなら空（or 全体にしたいなら .all）
+    end
+    @blogs = Blog.all
+  end
+
+  def new
+    @motivation = Motivation.new
+  end
+
+  def create
+    @motivation = current_user.motivations.build(motivation_params)
+    if @motivation.save
+      redirect_to motivations_path, notice: "目標を設定しました！"
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @motivation = Motivation.find(params[:id])
+    @comments = @motivation.comments
+    @comment = Comment.new
+  end
+
+  def edit
+    @motivation = Motivation.find(params[:id])
+  end
+
+  def update
+    @motivation = Motivation.find(params[:id])
+    if @motivation.update(motivation_params)
+      redirect_to motivation_path(@motivation), notice: "目標を更新しました！"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @motivation = Motivation.find(params[:id])
+    @motivation.destroy
+    redirect_to motivations_path, notice: "目標を削除しました"
+  end
+
+  private
+
+  def motivation_params
+    params.require(:motivation).permit(:contents, :title)
+  end
+end
