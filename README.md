@@ -1,25 +1,15 @@
-# README
+# Muscle Routing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+筋トレが続かない人のための記録支援アプリです。  
+トレーニング内容を記録・共有できるSNS風のWebサービスで、モチベーション維持をサポートします。
 
-Things you may want to cover:
+## 使用技術
 
-* Ruby version
+- **Ruby / Ruby on Rails**：SNS風の投稿機能や認証機能を実装
+- **Render**：本番環境へのデプロイ
+- **GitHub**：ソースコードのバージョン管理と公開
 
-* System dependencies
+## リンク
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-"# redeploy" 
+- 🔗 [本番環境はこちら](https://muscle-routing-2.onrender.com)
+- 💻 [GitHubリポジトリ](https://github.com/Hayatomoryusei/muscle_routing)
