@@ -400,6 +400,24 @@ h1, .section-title h1, .section-title h2 {
   margin-bottom: 50px;
 }
 
+.logout-button {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-left: auto;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #ff6ec4;
+  color: #fff;
+  border-color: #ff6ec4;
+}
+
+
 
 .chat-form {
   margin: 30px auto;
@@ -455,14 +473,28 @@ h1, .section-title h1, .section-title h2 {
   font-size: 0.9rem;
 }
 
+.subtitle-1{
+  margin-top: 10px;
+  position: absolute;
+  bottom: -0.7rem; /* 線との距離を調整 */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1e1e; /* 背景色で線を隠す */
+  padding: 0 0.5em;
+  color: #c47cff;
+  font-size: 0.9rem;
+}
+
 
 @media (max-width: 768px) {
+  /* レイアウト調整 */
   .header-container,
   .container,
   .chat-form {
     padding: 0 15px;
     flex-direction: column;
     align-items: flex-start;
+    max-width: 100%;
   }
 
   .header-container {
@@ -470,22 +502,51 @@ h1, .section-title h1, .section-title h2 {
     gap: 10px;
   }
 
+  /* ロゴ・見出し */
   .logo a {
     font-size: 1.5rem;
     text-align: center;
   }
 
   .section-title,
-  h1, .section-title h1, .section-title h2 {
+  h1,
+  .section-title h1,
+  .section-title h2 {
     font-size: 1.8rem;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
   }
 
-  .btn, .btn-submit, .btn-back, input.btn-header {
+  /* ボタン類 */
+  .btn,
+  .btn-submit,
+  .btn-back,
+  input.btn-header {
     width: 100%;
     text-align: center;
     padding: 12px 0;
     font-size: 1.1rem;
+    margin: 10px 0;
+  }
+
+  .nav-left{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  /* カレンダー */
+  .simple-calendar {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .simple-calendar table {
+    width: 100%;
+    min-width: 500px; /* 横スクロール用 */
   }
 
   .simple-calendar td {
@@ -496,8 +557,18 @@ h1, .section-title h1, .section-title h2 {
 
   .calendar-title {
     font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
+  .simple-calendar .today {
+    border: 2px solid #ff6ec4;
+    background: #2c2c2c;
+    box-shadow: 0 0 10px rgba(255, 110, 196, 0.5);
+    border-radius: 5px;
+  }
+
+  /* ゴール表示 */
   .highlight-goal {
     padding: 15px;
   }
@@ -506,15 +577,50 @@ h1, .section-title h1, .section-title h2 {
     font-size: 1.5rem;
   }
 
+  /* フォーム系 */
   .form-control {
     font-size: 1rem;
     padding: 10px;
   }
 
+  /* テーブル全体 */
   table,
   th,
   td {
     font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* トーストメッセージ（例：過去の記録を確認できます） */
+  .tooltip,
+  .toast-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    z-index: 999;
+    white-space: nowrap;
+  }
+
+  .subtitle
+  .subtitle-1{
+    margin: 30px;
+  }
+
+  /* 最下部余白 */
+  body {
+    padding-bottom: 60px;
   }
 }
 
