@@ -54,7 +54,6 @@ group :production do
   end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'simple_calendar', '~> 2.0'
 gem 'fog-aws'
@@ -68,3 +67,5 @@ gem 'mini_magick'
 
 # Active Storageバリデーション用
 gem 'active_storage_validations'
+# Gemfile の末尾に以下があるか確認（ある場合でもバージョン修正）
+gem "tzinfo-data" 

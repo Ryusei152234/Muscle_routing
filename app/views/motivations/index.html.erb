@@ -1,18 +1,19 @@
 <div class="container">
 
-  <!-- My Goal セクション -->
-  <div class="section-title">
-    <h2>My Goal</h2>
-    <div class="button-container">
-      <a class="btn" href="<%= new_motivation_path %>">目標設定</a>
-    </div>
+  <div class="title-container">
+    <h1 class="title">My Goal</h1>
+    <span class="subtitle">目標を管理します</span>
+  </div>
+
+  <div class="button-container">
+    <a class="btn" href="<%= new_motivation_path %>">目標設定</a>
   </div>
 
   <div class="motivations">
     <% @motivations.each do |t| %>
-      <div class="motivation highlight-goal"> <!-- クラス追加 -->
+      <div class="motivation highlight-goal"> 
         <p class="goal-user"><%= t.user.present? ? t.user.email : "匿名ユーザー" %></p>
-        <span class="goal-content"><%= t.contents %></span> <!-- クラス追加 -->
+        <span class="goal-content"><%= t.contents %></span> 
 
         <% if user_signed_in? %>
           <div class="button-group">
@@ -38,12 +39,13 @@
 
   <p id="notice"><%= notice %></p>
 
-  <!-- My Diary (日記) -->
-  <div class="section-title">
-    <h2>My Diary</h2>
-    <div class="button-container">
-      <a class="btn" href="<%= new_blog_path %>">日記を書く</a>
-    </div>
+  <div class="title-container">
+    <h1 class="title">My Diary</h1>
+    <span class="subtitle">日々の記録を残します</span>
+  </div>
+
+  <div class="button-container">
+    <a class="btn" href="<%= new_blog_path %>">日記を書く</a>
   </div>
 
   <div class="b">
@@ -71,8 +73,9 @@
     </table>
   </div>
 
-  <div class="section-title">
-    <h2>My Calendar</h2>
+  <div class="title-container">
+    <h1 class="title">My Calendar</h1>
+    <span class="subtitle">過去の記録を確認できます</span>
   </div>
 
   <%= month_calendar events: @blogs do |date, blogs| %>
@@ -84,4 +87,27 @@
     <% end %>
   <% end %>
 
+</div>
+<div class="title-container">
+  <h1 class="title">AIアドバイザー</h1>
+  <span class="subtitle">あなたの質問に答えます</span>
+</div>
+
+<div class="chat-form">
+  <%= form_with url: ai_chats_path, method: :post, local: true do |f| %>
+    <div class="field">
+      <%= f.label :message, "質問を入力してください：" %><br>
+      <%= f.text_area :message, rows: 3 %>
+    </div>
+    <div class="actions">
+      <%= f.submit "送信", class: "btn" %>
+    </div>
+  <% end %>
+
+  <% if flash[:ai_response] %>
+    <div class="ai-response">
+      <strong>AIの回答：</strong><br>
+      <%= simple_format(flash[:ai_response]) %>
+    </div>
+  <% end %>
 </div>
