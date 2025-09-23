@@ -6,7 +6,7 @@ require "tzinfo/data" # ← 無条件で先に読み込むのがポイント！
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+Dotenv::Railtie.load if defined?(Dotenv)
 module Muscle
   class Application < Rails::Application
     config.load_defaults 7.1

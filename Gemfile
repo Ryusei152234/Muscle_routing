@@ -69,3 +69,6 @@ gem 'mini_magick'
 gem 'active_storage_validations'
 # Gemfile の末尾に以下があるか確認（ある場合でもバージョン修正）
 gem "tzinfo-data" 
+gem "openai"
+gem "dotenv-rails", groups: [:development, :test]
+
