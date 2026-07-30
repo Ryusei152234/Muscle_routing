@@ -676,7 +676,8 @@ textarea {
 
 @media (max-width: 768px) {
   body {
-    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    padding-bottom: 24px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
     background: #17171a;
   }
 
