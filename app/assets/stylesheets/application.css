@@ -624,4 +624,390 @@ h1, .section-title h1, .section-title h2 {
   }
 }
 
+/* === Responsive UI refresh === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.nav,
+.nav-left,
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav form,
+.button-group form,
+.logout-form {
+  margin: 0;
+}
+
+.button-group {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form-control,
+.chat-form textarea,
+.comment-input {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    background: #17171a;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0;
+    background: rgba(20, 20, 22, 0.94);
+  }
+
+  .header-container {
+    min-height: 44px;
+    padding: 0 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    line-height: 1;
+    text-shadow: none;
+  }
+
+  .logo a {
+    display: block;
+    overflow: hidden;
+    font-size: clamp(1.05rem, 5vw, 1.35rem);
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nav {
+    flex: 0 0 auto;
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .nav-left {
+    position: static;
+    gap: 8px;
+  }
+
+  .nav .btn,
+  .logout-button {
+    width: auto;
+    min-height: 40px;
+    margin: 0;
+    padding: 9px 12px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    box-shadow: none;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .container,
+  .chat-form {
+    width: auto;
+    max-width: none;
+    margin: 14px 12px;
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .title-container {
+    margin-top: 26px;
+    margin-bottom: 24px;
+  }
+
+  .title,
+  .section-title,
+  h1,
+  .section-title h1,
+  .section-title h2 {
+    max-width: 100%;
+    margin-top: 0;
+    font-size: clamp(1.65rem, 8vw, 2.15rem);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .subtitle,
+  .subtitle-1 {
+    width: max-content;
+    max-width: calc(100vw - 64px);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  .button-container {
+    gap: 10px;
+    margin: 12px 0 28px;
+    flex-wrap: wrap;
+  }
+
+  .btn,
+  .btn-submit,
+  .btn-back,
+  input.btn-header {
+    width: auto;
+    min-height: 44px;
+    margin: 4px 0;
+    padding: 11px 16px;
+    font-size: 0.95rem;
+    line-height: 1.25;
+    touch-action: manipulation;
+  }
+
+  .button-container > .btn,
+  .button-container > input.btn {
+    flex: 1 1 180px;
+    text-align: center;
+  }
+
+  .highlight-goal {
+    margin-bottom: 14px;
+    padding: 18px 16px;
+    border-width: 1px;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  }
+
+  .goal-content {
+    margin: 8px 0 16px;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .button-group form,
+  .button-group .btn,
+  .button-group form .btn {
+    width: 100%;
+  }
+
+  .button-group .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding-inline: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    font-size: 1rem;
+  }
+
+  .form-control,
+  .chat-form textarea,
+  .comment-input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  textarea.form-control,
+  .chat-form textarea,
+  .comment-input {
+    min-height: 112px;
+  }
+
+  /* Diary tables become readable cards instead of a sideways spreadsheet. */
+  .b table,
+  .diary-list table {
+    display: block;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .b thead,
+  .diary-list thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .b tbody,
+  .b tr,
+  .diary-list tbody,
+  .diary-list tr {
+    display: block;
+    width: 100%;
+  }
+
+  .b tr,
+  .diary-list tr {
+    margin-bottom: 12px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.055);
+  }
+
+  .b td,
+  .diary-list td {
+    display: block;
+    width: 100%;
+    padding: 4px 0;
+    border: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .b td:first-child,
+  .diary-list td:first-child {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .b td:last-child {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    padding-top: 8px;
+  }
+
+  .b td:last-child .btn,
+  .diary-list td .btn {
+    width: 100%;
+    padding: 10px 7px;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  .simple-calendar {
+    display: block;
+    width: 100%;
+    overflow: visible;
+    font-size: 0.78rem;
+  }
+
+  .simple-calendar table {
+    display: table;
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .simple-calendar th {
+    padding: 7px 2px;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  .simple-calendar td {
+    height: 64px;
+    padding: 5px 3px;
+    font-size: 0.72rem;
+    overflow: hidden;
+  }
+
+  .simple-calendar .calendar-link {
+    margin-top: 3px;
+    overflow: hidden;
+    font-size: 0.68rem;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .calendar-heading {
+    gap: 8px;
+    margin: 14px 0 10px;
+  }
+
+  .calendar-prev a,
+  .calendar-next a {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .calendar-title {
+    font-size: 1rem;
+  }
+
+  .blog-card,
+  .motivation-card,
+  .comment,
+  .ai-response {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 390px) {
+  .header-container {
+    padding-inline: 12px;
+  }
+
+  .nav .btn,
+  .logout-button {
+    padding-inline: 9px;
+    font-size: 0.76rem;
+  }
+
+  .container,
+  .chat-form {
+    margin-inline: 8px;
+    padding-inline: 13px;
+  }
+
+  .simple-calendar td {
+    height: 56px;
+  }
+}
+
 
